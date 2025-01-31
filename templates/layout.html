@@ -15,18 +15,23 @@
 <body>
     <nav>
         <a href="http:/">
-            <span role="img" aria-label="Home">
+            <span role="img" aria-label="Home" title="Home">
                 🏠
             </span>
         </a> |
         <a href="http:/about">
-            <span role="img" aria-label="About">
+            <span role="img" aria-label="About" title="About">
                 ℹ️
             </span>
         </a> |
         <a href="{% url 'posts:list' %}">
-            <span role="img" aria-label="Posts">
+            <span role="img" aria-label="Posts" title="Posts">
                 📰
+            </span>
+        </a> |
+        <a href="{% url 'users:register' %}">
+            <span role="img" aria-label="Register a user" title="Register a user">
+                👤
             </span>
         </a> 
     </nav>
