@@ -29,16 +29,29 @@
                 📰
             </span>
         </a> | 
-        <a href="{% url 'users:register' %}">
-            <span role="img" aria-label="Register a user" title="Register a user">
-                👤
+        {% if user.is_authenticated %}
+        <a href="{% url 'posts:new-post' %}">
+            <span role="img" aria-label="Create a new post" title="Create a new post">
+                ✏️
             </span>
         </a> | 
-        <a href="{% url 'users:login' %}">
-            <span role="img" aria-label="Log in" title="Log in">
-                🔑
-            </span>
-        </a> 
+        <form class="logout" action="{% url 'users:logout' %}" method="post">
+            {% csrf_token %}
+            <button class="logout-button" aria-label="Logout" title="Logout">👋</button>
+        </form>
+        {% else %}
+            <a href="{% url 'users:register' %}">
+                <span role="img" aria-label="Register a user" title="Register a user">
+                    👤
+                </span>
+            </a> | 
+            
+            <a href="{% url 'users:login' %}">
+                <span role="img" aria-label="Log in" title="Log in">
+                    🔑
+                </span>
+            </a>
+        {% endif %}
     </nav>
     <main>
         {% block content %}
